@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 python projects/SWINTS/train_net.py --num-gpus 1 --config-file projects/SWINTS/configs/multiswints/multiswints-swin-generic.yaml

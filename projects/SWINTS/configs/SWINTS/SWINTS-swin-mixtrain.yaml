@@ -1,0 +1,22 @@
+_BASE_: "Base-SWINTS_swin.yaml"
+MODEL:
+  WEIGHTS: "/dataset/s3/cv_platform/JeremyFeng/ckpt/SWINTS/SWINTS/pretrain/model_0239999_wo_RC.pth"
+  SWINTS:
+    NUM_PROPOSALS: 300
+    NUM_CLASSES: 2
+  REC_HEAD:
+    PRETRAIN: False
+DATASETS:
+  # TRAIN: ("totaltext_train",)
+  TRAIN: ("totaltext_train","icdar_2015_train","icdar_2013_train","icdar_2017_validation_mlt","icdar_2017_mlt",)
+  TEST:  ("totaltext_test",)
+  # TEST:  ("coco_2017_test-dev",)
+SOLVER:
+  IMS_PER_BATCH: 16
+  BASE_LR: 0.00005
+  STEPS: (40000, 70000,)
+  MAX_ITER: 80000
+  CHECKPOINT_PERIOD: 5000
+INPUT:
+  FORMAT: "RGB"
+OUTPUT_DIR: "./output/swints-mixtrain/"
